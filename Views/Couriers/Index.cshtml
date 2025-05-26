@@ -1,0 +1,44 @@
+﻿@using RGA.Models
+@model RGA.Models.ViewModels.CouriersViewModel
+
+@{
+    ViewBag.Title = "Zarządzaj kierowcami";
+}
+
+<h2>Kierowcy z którymi współpracujesz</h2>
+
+
+<table class="table">
+    <tr>
+        <th>Nazwa</th>
+        <th>E-mail</th>
+        <th>Numer telefonu</th>
+        <th> </th>
+    </tr>
+
+    @foreach (User item in Model.drivers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+
+            <td>
+                @Html.ActionLink("Kalendarz", "Calendar", new {item.Id})
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
